@@ -87,17 +87,7 @@ function SafetyBrand() {
               </motion.div>
             ))}
 
-            {/* CTA */}
-            <motion.button
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="w-full mt-4 flex items-center justify-center gap-3 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-4 rounded-xl font-semibold shadow-lg shadow-red-600/20 hover:shadow-red-600/30 transition-all group"
-            >
-              <Shield size={20} />
-              View Full Safety Guide
-              <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+
           </motion.div>
 
           {/* Brand Story */}

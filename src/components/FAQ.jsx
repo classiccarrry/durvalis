@@ -29,14 +29,18 @@ function FAQ({ amazonUrl }) {
   ];
 
   return (
-    <section id="faq" className="py-24 bg-white/90 backdrop-blur-sm">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-24 bg-gray-50 relative overflow-hidden">
+      {/* Background blobs */}
+      <div className="absolute -top-20 -left-20 w-96 h-96 bg-red-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 -right-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-50 text-blue-600 rounded-full mb-6">
+          <div className="inline-flex items-center justify-center w-14 h-14 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-2xl mb-6 shadow-sm">
             <HelpCircle size={32} />
           </div>
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-          <p className="text-xl text-gray-600">Everything you need to know about Durvalis Ivermectin Paste.</p>
+          <h2 className="text-4xl font-serif font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <p className="text-xl text-gray-600 font-light">Everything you need to know about Durvalis Ivermectin Paste.</p>
         </div>
 
         <div className="space-y-4">
@@ -45,18 +49,18 @@ function FAQ({ amazonUrl }) {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewpo r t={{ once: true }}
-              transiti o n={{ delay: index * 0.1 }}
-              className={`border rounded-2xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'border-red-200 shadow-lg bg-red-50/30' : 'border-gray-200 hover:border-red-200'}`}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className={`rounded-2xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'bg-white shadow-lg ring-1 ring-gray-900/5' : 'bg-white/60 hover:bg-white shadow-sm ring-1 ring-gray-900/5'}`}
             >
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full px-8 py-6 text-left flex justify-between items-center group"
+                className="w-full px-8 py-6 text-left flex justify-between items-center group cursor-pointer"
               >
-                <span className={`font-bold text-lg transition-colors ${openFaq === index ? 'text-red-700' : 'text-gray-800 group-hover:text-red-600'}`}>
+                <span className={`font-bold text-lg select-none transition-colors ${openFaq === index ? 'text-[var(--color-primary)]' : 'text-gray-800'}`}>
                   {faq.question}
                 </span>
-                <span className={`flex-shrink-0 ml-4 p-2 rounded-full transition-colors ${openFaq === index ? 'bg-red-100 text-red-600' : 'bg-gray-100 text-gray-500 group-hover:bg-red-50 group-hover:text-red-500'}`}>
+                <span className={`flex-shrink-0 ml-4 p-2 rounded-full transition-all duration-300 ${openFaq === index ? 'bg-[var(--color-primary)] text-white rotate-180' : 'bg-gray-100 text-gray-400 group-hover:bg-[var(--color-primary)]/10 group-hover:text-[var(--color-primary)]'}`}>
                   {openFaq === index ? <Minus size={20} /> : <Plus size={20} />}
                 </span>
               </button>
@@ -66,9 +70,9 @@ function FAQ({ amazonUrl }) {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <div className="px-8 pb-8 pt-0 text-gray-600 leading-relaxed">
+                    <div className="px-8 pb-8 pt-0 text-gray-600 leading-relaxed font-light text-lg">
                       {faq.answer}
                     </div>
                   </motion.div>

@@ -9,7 +9,7 @@ import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 
 function App() {
-  const amazonUrl = "https://www.amazon.com";
+  const amazonUrl = "https://a.co/d/b8HCozh";
 
   return (
     <div className="min-h-screen pt-20">

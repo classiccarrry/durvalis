@@ -25,18 +25,16 @@ function Header({ amazonUrl }) {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? 'bg-white/95 backdrop-blur-md shadow-lg py-3'
-        : 'bg-white/90 backdrop-blur-sm py-4'
-        }`}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-2 glass shadow-sm' : 'py-6 bg-transparent'}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex justify-between items-center">
-          {/* Logo - Keep original design */}
-          <a href="#home" className="text-2xl font-bold flex items-center gap-2 group">
-            <div className="border-[3px] border-red-600 rounded-full px-6 py-1 group-hover:rotate-0 transition-transform bg-white/50 backdrop-blur-sm">
-              <span className="text-2xl font-black italic text-gray-900 tracking-tighter">
+          {/* Logo */}
+          {/* Logo - Badge Style */}
+          <a href="#home" className="group">
+            <div className="border-3 border-[var(--color-primary)] rounded-full px-5 py-1 transition-transform group-hover:scale-105">
+              <span className="text-2xl font-sans font-black italic tracking-tighter text-gray-900 leading-none">
                 DURVALIS
               </span>
             </div>
@@ -48,23 +46,24 @@ function Header({ amazonUrl }) {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium hover:text-red-500 transition-colors text-gray-700 relative group"
+                className="text-sm font-medium hover:text-[var(--color-primary)] transition-colors text-gray-700 relative group uppercase tracking-widest"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--color-primary)] transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
-            {/* Shop Now Button - Keep original design */}
+
+            {/* Shop Now Button */}
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href={amazonUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-red-600 text-white px-6 py-2.5 rounded-full font-medium shadow-lg shadow-red-600/30 hover:bg-red-700 transition-all flex items-center gap-2"
+              className="bg-[var(--color-primary)] text-white px-6 py-2.5 rounded-full font-medium shadow-lg hover:shadow-[var(--color-primary)]/40 transition-all flex items-center gap-2"
             >
               <ShoppingCart size={18} />
-              Shop Now
+              <span className="tracking-wide">Shop Now</span>
             </motion.a>
           </div>
 
@@ -90,27 +89,26 @@ function Header({ amazonUrl }) {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden glass rounded-xl mt-4 mx-2"
             >
-              <div className="py-6 space-y-4 border-t border-gray-100 mt-4">
+              <div className="py-6 px-4 space-y-4">
                 {navLinks.map((link) => (
                   <a
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-gray-700 font-medium hover:text-red-600 py-2 px-4 hover:bg-red-50 rounded-lg transition-all"
+                    className="block text-gray-700 font-medium hover:text-[var(--color-primary)] py-2 px-4 hover:bg-red-50/50 rounded-lg transition-all"
                   >
                     {link.name}
                   </a>
                 ))}
-                {/* Mobile Shop Now Button - Same design */}
                 <motion.a
                   href={amazonUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}
                   whileTap={{ scale: 0.98 }}
-                  className="block w-full text-center bg-red-600 text-white px-6 py-3.5 rounded-full font-medium shadow-lg shadow-red-600/30 hover:bg-red-700 transition-colors flex items-center justify-center gap-2"
+                  className="block w-full text-center bg-[var(--color-primary)] text-white px-6 py-3.5 rounded-full font-medium shadow-md hover:bg-[var(--color-primary-dark)] transition-colors flex items-center justify-center gap-2"
                 >
                   <ShoppingCart size={18} />
                   Shop on Amazon

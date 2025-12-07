@@ -1,137 +1,138 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Check, Star, ShieldCheck, Award } from 'lucide-react';
 
 function Hero({ amazonUrl }) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Background with subtle pattern */}
-      <div className="absolute inset-0 bg-grid-gray-200/[0.02] bg-grid-16" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-50">
 
-      {/* Content Container */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      {/* --- Background Layers --- */}
 
-          {/* Left Column - Text Content */}
+      {/* 1. Base Image with Parallax-like feel (static for now) */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[url('/assets/hero.jpg')] bg-cover bg-center opacity-70 transform scale-105" />
+        {/* Darkening Overlay for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-white/40" />
+      </div>
+
+      {/* 2. Abstract "Royal" Gradients */}
+      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-red-600/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 z-0 animate-pulse-slow" />
+      <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-amber-500/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 z-0" />
+
+      {/* 3. Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[url('/assets/grid.svg')] opacity-10 z-0 pointer-events-none" />
+
+
+      {/* --- Content Container --- */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-32 pb-20 lg:pt-40 lg:pb-32">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
+          {/* --- Left Column: Typography & CTA --- */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-10"
           >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold"
-            >
-              <Check size={16} />
-              <span>Veterinarian Recommended</span>
-            </motion.div>
+
 
             {/* Headline */}
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Professional-Grade<br />
-                <span className="bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
-                  Equine Dewormer
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-gray-900 leading-[1] tracking-tight">
+                <span className="block text-gray-800">Equine</span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-red-900 italic relative z-10 pb-2">
+                  Excellence.
                 </span>
               </h1>
-
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg">
-                Apple-flavored Ivermectin paste for effective parasite control.
-                Trusted by horse owners nationwide.
+              <p className="text-xl text-gray-600 leading-relaxed max-w-lg font-light border-l-4 border-[var(--color-primary)] pl-6">
+                The gold standard in parasite control. Designed for professionals, trusted by champions.
               </p>
             </div>
 
-            {/* Features List */}
+            {/* Checklist */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="space-y-3"
+              transition={{ delay: 0.5 }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3"
             >
               {[
-                "✓ 1.87% Ivermectin Formula",
-                "✓ Apple-Flavored for Easy Administration",
-                "✓ Safe for All Horse Breeds",
-                "✓ Effective Parasite Control"
+                "1.87% Ivermectin Formula",
+                "Apple-Flavored Paste",
+                "Easy-Grip Syringe",
+                "Safe for All Breeds"
               ].map((feature, index) => (
                 <div key={index} className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-red-500 rounded-full" />
-                  <span className="text-gray-700">{feature}</span>
+                  <div className="w-5 h-5 rounded-full bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)]">
+                    <Check size={12} strokeWidth={3} />
+                  </div>
+                  <span className="text-gray-700 font-medium">{feature}</span>
                 </div>
               ))}
             </motion.div>
 
-            {/* CTA Button */}
+            {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="pt-4"
+              transition={{ delay: 0.7 }}
+              className="pt-4 flex flex-col sm:flex-row gap-5"
             >
               <motion.a
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 href={amazonUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-xl hover:shadow-red-600/20 transition-all duration-300"
+                className="relative overflow-hidden group bg-[var(--color-primary)] text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl shadow-red-900/20 flex items-center justify-center gap-3"
               >
-                <span>Shop on Amazon</span>
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                <span className="relative z-10">Shop on Amazon</span>
+                <ArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" size={20} />
+                <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.a>
 
-              <p className="mt-3 text-sm text-gray-500">
-                Free shipping available on qualified orders
-              </p>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="#product"
+                className="px-8 py-4 rounded-full text-lg font-semibold text-gray-700 bg-white border border-gray-200 shadow-lg hover:shadow-xl hover:text-[var(--color-primary)] transition-all flex items-center justify-center"
+              >
+                Learn More
+              </motion.a>
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Product Image */}
+
+          {/* --- Right Column: Immersive Product Display --- */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+            className="relative z-20 flex justify-center lg:justify-end"
           >
-            <div className="relative">
-              {/* Floating effect */}
-              <motion.div
-                animate={{ y: [-15, 15, -15] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10"
-              >
-                <img
-                  src="/assets/bg-removed.png"
-                  alt="DURVALIS Ivermectin Paste 1.87%"
-                  className="w-full max-w-md mx-auto drop-shadow-2xl"
-                />
-              </motion.div>
+            {/* Glow effect behind product */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-b from-amber-200/20 to-red-500/5 rounded-full blur-[80px]" />
 
-              {/* Background glow */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-red-500/10 to-red-600/10 blur-3xl rounded-full" />
+            {/* Animated Product Container */}
+            <motion.div
+              animate={{ y: [-15, 10, -15] }}
 
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-red-500/5 rounded-full blur-xl" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-red-600/5 rounded-full blur-xl" />
-            </div>
+              className="relative"
+            >
+              {/* Main Product Image */}
+              <img
+                src="/assets/bg-removed.png"
+                alt="DURVALIS Premium Ivermectin Paste"
+                className="relative z-10 w-full max-w-[600px] drop-shadow-2xl transform lg:scale-110 lg:translate-x-10"
+              />
+
+
+
+
+            </motion.div>
           </motion.div>
 
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gray-400 rounded-full mt-2" />
-        </div>
-      </motion.div>
     </section>
   );
 }
