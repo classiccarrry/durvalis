@@ -9,7 +9,7 @@ function Hero({ amazonUrl }) {
 
       {/* 1. Base Image with Parallax-like feel (static for now) */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('/assets/hero.jpg')] bg-cover bg-center opacity-70 transform scale-105" />
+        <div className="absolute inset-0 bg-[url('/assets/hero.webp')] bg-cover bg-center opacity-70 transform scale-105" />
         {/* Darkening Overlay for text contrast */}
         <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-white/40" />
       </div>
@@ -120,7 +120,7 @@ function Hero({ amazonUrl }) {
             >
               {/* Main Product Image */}
               <img
-                src="/assets/bg-removed.png"
+                src="/assets/bg-removed.webp"
                 alt="DURVALIS Premium Ivermectin Paste"
                 className="relative z-10 w-full max-w-[600px] drop-shadow-2xl transform lg:scale-110 lg:translate-x-10"
               />

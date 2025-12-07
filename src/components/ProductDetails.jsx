@@ -3,13 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ShoppingCart, Package, Scale, Award, Shield, Truck, ChevronRight, Star, Zap } from 'lucide-react';
 
 function ProductDetails({ amazonUrl }) {
-  const [selectedImage, setSelectedImage] = useState('/assets/1.jpg');
+  const [selectedImage, setSelectedImage] = useState('/assets/1.webp');
 
   const productImages = [
-    { src: '/assets/1.jpg', alt: 'Ivermectin Paste Syringe' },
-    { src: '/assets/2.jpg', alt: 'Dosing Instructions' },
-    { src: '/assets/3.jpg', alt: 'Broad Spectrum Protection' },
-    { src: '/assets/4.jpg', alt: 'Trusted Formula' },
+    { src: '/assets/1.webp', alt: 'Ivermectin Paste Syringe' },
+    { src: '/assets/2.webp', alt: 'Dosing Instructions' },
+    { src: '/assets/3.webp', alt: 'Broad Spectrum Protection' },
+    { src: '/assets/4.webp', alt: 'Trusted Formula' },
   ];
 
   const features = [
